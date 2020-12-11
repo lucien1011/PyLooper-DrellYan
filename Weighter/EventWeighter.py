@@ -1,5 +1,5 @@
 import numpy as np
-import pickle,os,awkward
+import pickle,os,awkward,uproot_methods
 
 from PyLooper.common.Module import Module
 
@@ -15,4 +15,8 @@ class EventWeighter(Module):
         cfg.collector.mu_genphi = data["Muon_GenPhi"][nlep2_idx]
         cfg.collector.mu_genmass = data["Muon_GenMass"][nlep2_idx]
 
+        cfg.collector.mu_vec1 = uproot_methods.classes.TLorentzVector.PtEtaPhiMassLorentzVectorArray(cfg.collector.mu_pt[:,0],cfg.collector.mu_eta[:,0],cfg.collector.mu_phi[:,0],cfg.collector.mu_genmass[:,0],)
+        cfg.collector.mu_vec2 = uproot_methods.classes.TLorentzVector.PtEtaPhiMassLorentzVectorArray(cfg.collector.mu_pt[:,1],cfg.collector.mu_eta[:,1],cfg.collector.mu_phi[:,1],cfg.collector.mu_genmass[:,1],)
+
+        cfg.collector.mll = (cfg.collector.mu_vec1 + cfg.collector.mu_vec2).mass 
         cfg.collector.event_weight = np.ones(cfg.collector.mu_pt.shape[0])
