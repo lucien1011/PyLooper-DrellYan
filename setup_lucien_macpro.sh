@@ -1,0 +1,2 @@
+export PYTHONPATH=${PYTHONPATH}:${PWD}/
+export BASE_PATH=${PWD}
