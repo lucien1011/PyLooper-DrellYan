@@ -6,7 +6,7 @@ from PyLooper.hep.plotter.Plotter import Plotter
 from PyLooper.hep.plotter.Plot import Plot
 
 from dataset.HZZ_HEL_MadgraphPythia import sample_dict
-from weighter.EventWeighter import EventWeighter
+from weighter.HZZWeighter import HZZWeighter
 
 verbose = True
 nblock = 1024
@@ -15,9 +15,9 @@ entrysteps = nblock*ngrid
 namedecode = "utf-8" 
 
 dataset_list = [
-        sample_dict["0.007207126964764954"],
-        sample_dict["0.11519407215005831"],
-        sample_dict["0.19386708765359545"],
+        sample_dict["0.002312241433103379"],
+        sample_dict["0.11241494661692496"],
+        sample_dict["0.18344811555903712"],
         ]
 merged_dataset_list = []
 
@@ -26,16 +26,16 @@ collector = Collector(
     )
 
 plots = [
-        Plot("Pt_L1",lambda data,dataset,cfg: cfg.collector.mu_pt[:,0],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(100,0.,200.),),
-        Plot("Pt_L2",lambda data,dataset,cfg: cfg.collector.mu_pt[:,1],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(100,0.,100.),),
-        Plot("Eta_L1",lambda data,dataset,cfg: cfg.collector.mu_eta[:,0],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(100,-3.,3.),),
-        Plot("Eta_L2",lambda data,dataset,cfg: cfg.collector.mu_eta[:,1],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(100,-3.,3.),),
-        Plot("Phi_L1",lambda data,dataset,cfg: cfg.collector.mu_phi[:,0],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(100,-3.,3.),),
-        Plot("Phi_L2",lambda data,dataset,cfg: cfg.collector.mu_phi[:,1],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(100,-3.,3.),),
-
+        Plot("mass4l",lambda data,dataset,cfg: data["mass4l"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(25,100.,150.),),
+        Plot("massZ1",lambda data,dataset,cfg: data["massZ1"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(60,0.,120.),),
+        Plot("massZ2",lambda data,dataset,cfg: data["massZ2"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
+        Plot("pTL1",lambda data,dataset,cfg: data["pTL1"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
+        Plot("pTL2",lambda data,dataset,cfg: data["pTL2"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
+        Plot("pTL3",lambda data,dataset,cfg: data["pTL3"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
+        Plot("pTL4",lambda data,dataset,cfg: data["pTL4"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
     ]
 
 modules = [
-    EventWeighter("EventWeighter"),
+    HZZWeighter("EventWeighter"),
     Plotter("Plot",),
     ]

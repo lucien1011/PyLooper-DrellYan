@@ -23,10 +23,12 @@ for f in os.listdir(input_dir):
         )
     sample_dict[param_str].param = float(param_str)
     sample_dict[param_str].branches = [
-        "Muon_Pt",
-        "Muon_Eta",
-        "Muon_Phi",
-        "Electron_Pt",
-        "Electron_Eta",
-        "Electron_Phi",
+        "mass4l",
+        "massZ1",
+        "massZ2",
+        "pTL1",
+        "pTL2",
+        "pTL3",
+        "pTL4",
+        "passedFullSelection",
         ]
