@@ -7,7 +7,7 @@ from PyLooper.hep.plotter.Plot import Plot
 
 #from Dataset.ZJetsToLL_LO_MLM import ZJetsToLL_LO_MLM
 from dataset.DYToLL_MadgraphPythia import sample_dict
-from weighter.EventWeighter import EventWeighter
+from weighter.DYToLLWeighter import DYToLLWeighter
 
 verbose = True
 nblock = 1024

@@ -3,7 +3,7 @@ import pickle,os,awkward,uproot_methods
 
 from PyLooper.common.Module import Module
 
-class EventWeighter(Module):
+class DYToLLWeighter(Module):
     def analyze(self,data,dataset,cfg):
         nlep2_idx = data["Muon_Pt"].count() >= 2
         cfg.collector.mu_pt = data["Muon_Pt"][nlep2_idx]
