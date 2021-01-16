@@ -5,8 +5,9 @@ from PyLooper.stat.Hist1D import Hist1D
 from PyLooper.hep.plotter.Plotter import Plotter
 from PyLooper.hep.plotter.Plot import Plot
 
-from Dataset.ZJetsToLL_LO_MLM import ZJetsToLL_LO_MLM
-from Weighter.EventWeighter import EventWeighter
+#from Dataset.ZJetsToLL_LO_MLM import ZJetsToLL_LO_MLM
+from dataset.DYToLL_MadgraphPythia import sample_dict
+from weighter.EventWeighter import EventWeighter
 
 verbose = True
 nblock = 1024
@@ -14,11 +15,12 @@ ngrid = 100
 entrysteps = nblock*ngrid
 namedecode = "utf-8" 
 
-dataset_list =  [ZJetsToLL_LO_MLM]
+#dataset_list =  [ZJetsToLL_LO_MLM]
+dataset_list = sample_dict.values()
 merged_dataset_list = []
 
 collector = Collector(
-    output_path = "./output/2020_12_07_plot_ZJetsToLL_cfg/",
+    output_path = "./output/2021_01_12_plot_ZJetsToLL_cfg/",
     )
 
 plots = [

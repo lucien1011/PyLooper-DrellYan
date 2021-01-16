@@ -4,12 +4,15 @@ from PyLooper.hep.cms.dataset.CMSDataset import CMSDataset
 from PyLooper.hep.root.TFile import TFile
 
 # ____________________________________________________________________________________________________________________________________________ ||
-input_dir           = "/Users/lucien/CMS/ztoll-ml/Data/201210_mg_dyll/"
+#input_dir           = "/Users/lucien/CMS/ztoll-ml/Data/201210_mg_dyll/"
+#input_dir           = "/cmsuf/data/store/user/t2/users/klo/MLHEP/MuonTree/201211_mg_dyll/"
+input_dir           = "/cmsuf/data/store/user/t2/users/klo/MLHEP/MuonTree/210112_mg_dyll/"
 tree_path_in_file   = "LiteTree"
 
 # ____________________________________________________________________________________________________________________________________________ ||
 sample_dict = {}
 for f in os.listdir(input_dir):
+    if ".root" not in f: continue
     mass_str = f.replace(".root","")
     sample_dict[mass_str] = CMSDataset(
         "DYToLL_M"+mass_str,
