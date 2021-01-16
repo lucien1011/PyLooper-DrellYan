@@ -33,6 +33,11 @@ plots = [
         Plot("pTL2",lambda data,dataset,cfg: data["pTL2"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
         Plot("pTL3",lambda data,dataset,cfg: data["pTL3"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
         Plot("pTL4",lambda data,dataset,cfg: data["pTL4"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
+        Plot("cosTheta1",lambda data,dataset,cfg: data["cosTheta1"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(20,-1.,1.),),
+        Plot("cosTheta2",lambda data,dataset,cfg: data["cosTheta2"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(20,-1.,1.),),
+        Plot("cosThetaStar",lambda data,dataset,cfg: data["cosThetaStar"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(20,-1.,1.),),
+        Plot("Phi",lambda data,dataset,cfg: data["Phi"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(20,-4.,4.),),
+        Plot("Phi1",lambda data,dataset,cfg: data["Phi1"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(20,-4.,4.),),
     ]
 
 modules = [

@@ -30,5 +30,10 @@ for f in os.listdir(input_dir):
         "pTL2",
         "pTL3",
         "pTL4",
+        "cosTheta1",
+        "cosTheta2",
+        "cosThetaStar",
+        "Phi",
+        "Phi1",
         "passedFullSelection",
         ]
