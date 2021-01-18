@@ -17,10 +17,15 @@ ZZ = CMSDataset(
     isMC = True,
     plot_name = "ZZ",
     )
+ZZ.param = -1.
 ZZ.branches = [
     "mass4l",
     "massZ1",
     "massZ2",
+    "pT4l",
+    "rapidity4l",
+    "pTZ1",
+    "pTZ2",
     "pTL1",
     "pTL2",
     "pTL3",
