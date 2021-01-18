@@ -5,10 +5,26 @@ from PyLooper.common.Module import Module
 
 class CSVProducer(Module):
     def analyze(self,data,dataset,cfg):
+        data_shape0 = data["mass4l"].shape[0]
         arr = np.concatenate(
                 [
                     np.expand_dims(data["mass4l"],axis=1),
-                    np.broadcast_to(dataset.mass,(cfg.collector.mu_pt.shape[0],1)),
+                    np.expand_dims(data["massZ1"],axis=1),
+                    np.expand_dims(data["massZ2"],axis=1),
+                    np.expand_dims(data["pT4l"],axis=1),
+                    np.expand_dims(data["rapidity4l"],axis=1),
+                    np.expand_dims(data["pTZ1"],axis=1),
+                    np.expand_dims(data["pTZ2"],axis=1),
+                    np.expand_dims(data["pTL1"],axis=1),
+                    np.expand_dims(data["pTL2"],axis=1),
+                    np.expand_dims(data["pTL3"],axis=1),
+                    np.expand_dims(data["pTL4"],axis=1),
+                    np.expand_dims(data["cosTheta1"],axis=1),
+                    np.expand_dims(data["cosTheta2"],axis=1),
+                    np.expand_dims(data["cosThetaStar"],axis=1),
+                    np.expand_dims(data["Phi"],axis=1),
+                    np.expand_dims(data["Phi1"],axis=1),
+                    np.broadcast_to(dataset.param,(data_shape0,1)),
                 ],
                 axis=1,
                 )
