@@ -5,7 +5,9 @@ from PyLooper.stat.Hist1D import Hist1D
 from PyLooper.hep.plotter.Plotter import Plotter
 from PyLooper.hep.plotter.Plot import Plot
 
-from dataset.HZZ_HEL_MadgraphPythia import sample_dict
+from dataset.ZZ_HEL_MadgraphPythia import ZZ
+from dataset.EFTHZZ_HEL_MadgraphPythia import sample_dict
+from dataset.SMHZZ_HEL_MadgraphPythia import ggH 
 from weighter.HZZWeighter import HZZWeighter
 
 verbose = True
@@ -15,8 +17,8 @@ entrysteps = nblock*ngrid
 namedecode = "utf-8" 
 
 dataset_list = [
-        sample_dict["0.002312241433103379"],
-        sample_dict["0.005355900834631777"],
+        ggH,
+        ZZ,
         sample_dict["0.010927157057048276"],
         sample_dict["0.0509606966591849"],
         sample_dict["0.11241494661692496"],
@@ -25,14 +27,17 @@ dataset_list = [
         ]
 merged_dataset_list = []
 
+for d in dataset_list:
+    d.lumi = 130*1000.
+
 collector = Collector(
     output_path = "./output/2021_01_16_plot_HZZ_HEL_cfg/",
     )
 
 plots = [
-        Plot("mass4l",lambda data,dataset,cfg: data["mass4l"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(25,100.,150.),),
+        Plot("mass4l",lambda data,dataset,cfg: data["mass4l"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(60,80.,200.),),
         Plot("massZ1",lambda data,dataset,cfg: data["massZ1"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(60,0.,120.),),
-        Plot("massZ2",lambda data,dataset,cfg: data["massZ2"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
+        Plot("massZ2",lambda data,dataset,cfg: data["massZ2"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(60,0.,120.),),
         Plot("pTL1",lambda data,dataset,cfg: data["pTL1"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(50,0.,100.),),
         Plot("pTL2",lambda data,dataset,cfg: data["pTL2"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
         Plot("pTL3",lambda data,dataset,cfg: data["pTL3"],lambda data,dataset,cfg: cfg.collector.event_weight,hist=Hist1D(30,0.,60.),),
